@@ -1,9 +1,9 @@
 FROM ubuntu:focal
 
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y locales \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y locales iputils-ping \
         kea-admin kea-ctrl-agent kea-dhcp-ddns-server kea-dhcp4-server kea-dhcp6-server \
-        iputils-ping dumb-init supervisor postgresql-client && \
+        dumb-init supervisor postgresql-client mysql-client && \
     rm -rf /var/lib/apt/lists/* && \
     localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 
